@@ -1,0 +1,23 @@
+<div class="user-shared-boards">
+  <div class="boards-header">
+    <img class="icon" src="../../../../../assets/icons/time-fast.svg" />
+    <h2 class="boards-header__title">{{ user.name }}</h2>
+  </div>
+  <div class="boards">
+    @for (sharedBoard of user.ownBoards;track sharedBoard){
+    <app-board
+      [boardHubService]="boardHubService"
+      [board]="sharedBoard"
+    ></app-board>
+    }
+  </div>
+  <div class="show-more-boards-button-wrapper">
+    <button
+      class="show-more-boards-button"
+      *ngIf="totalNumberSharedBoards > user.ownBoards.length"
+      (click)="showMoreSharedBoards()"
+    >
+      Еще
+    </button>
+  </div>
+</div>

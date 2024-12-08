@@ -1,0 +1,42 @@
+<div
+  class="card-attachment"
+  [ngClass]="{ 'card-attachment-hide': !hasShownFull }"
+>
+  <button
+    class="card-attachment__show-button"
+    (click)="hasShownFull = !hasShownFull"
+  >
+    <p *ngIf="hasShownFull">Скрыть все</p>
+    <p *ngIf="!hasShownFull">Показать все</p>
+  </button>
+  <table class="card-attachment__table">
+    @for (attachment of card.attachments;track attachment){
+    <tr>
+      <td (click)="downloadAttachment(attachment.id)">
+        {{ attachment.fileName }}
+      </td>
+      <td>
+        <button
+          class="delete-attachment-button"
+          (click)="deleteAttachment(attachment.id)"
+        >
+          Удалить
+        </button>
+      </td>
+    </tr>
+    }
+  </table>
+  <div class="card-attachment__upload-file-wrapper">
+    <div class="card-attachment__upload-file">
+      <label for="file-upload" class="custom-file-upload">
+        Добавить вложение
+        <input
+          class="cover-image__input-file"
+          id="file-upload"
+          type="file"
+          multiple="false"
+          (change)="upload($event)"
+      /></label>
+    </div>
+  </div>
+</div>

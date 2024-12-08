@@ -1,0 +1,41 @@
+<app-loader *ngIf="hasShowLoader"></app-loader>
+<div class="login-wrapper">
+  <div class="form">
+    <p id="heading">Авторизация</p>
+    <div class="field">
+      <input
+        [(ngModel)]="form.email"
+        required
+        autocomplete="off"
+        placeholder="Email"
+        class="input-field"
+        type="Email"
+      />
+      <span class="hint-message" *ngIf="!emailRegex.test(form.email)">
+        {{ errorMessageEmail }}
+      </span>
+      <input
+        placeholder="Password"
+        class="input-field"
+        type="password"
+        [(ngModel)]="form.password"
+        required
+      />
+      <button class="login-button" (click)="login()">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Войти&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </button>
+      <div class="btn">
+        <button class="register-button" [routerLink]="'/register/'">
+          Создать
+        </button>
+        <button
+          class="forgot-password-button"
+          [routerLink]="'/forgot-password/'"
+        >
+          Забыл пароль
+        </button>
+      </div>
+    </div>
+  </div>
+  <img width="500px" src="../../../../assets/images/Computer login-bro.svg" />
+</div>

@@ -1,0 +1,67 @@
+.board {
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+.board__control-panel {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  gap: 16px;
+  padding: 12px;
+}
+.control-panel-button {
+  width: 140px;
+  height: 50px;
+  border-radius: 8px;
+  padding: 8px;
+}
+.current-permission {
+  margin: 0;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  height: 50px;
+  border-radius: 8px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  padding: 8px 16px 8px 16px;
+}
+.board__content {
+  float: left;
+}
+.board__lists {
+  display: flex;
+  align-items: flex-start;
+}
+.board__add-list-block {
+  width: 360px;
+  margin-top: 8px;
+}
+
+.board__add-list-form {
+  border-radius: 8px;
+}
+
+.add-list-form__list-title-input {
+  width: 100%;
+  height: 40px;
+  border-radius: 8px 8px 0 0;
+}
+.add-list-form__add-list-button {
+  width: 100%;
+  height: 44px;
+
+  border-radius: 0 0 8px 8px;
+}
+
+.add-list-block__add-list-button {
+  width: 100%;
+  border-radius: 8px;
+  height: 50px;
+}

@@ -1,0 +1,25 @@
+<div class="add-board">
+  <input
+    class="input-title"
+    type="text"
+    [(ngModel)]="board.title"
+    placeholder="Введите текст..."
+    (change)="updateTitle()"
+  />
+  <input
+    class="design__color-input"
+    type="color"
+    [(ngModel)]="board.colorCode"
+    (change)="updateColorCode()"
+  />
+
+  <label for="image-board-upload" class="custom-file-upload">
+    Загрузить фон
+    <input
+      class="cover-image__input-file"
+      id="image-board-upload"
+      type="file"
+      multiple="false"
+      (change)="upload($event)"
+  /></label>
+</div>

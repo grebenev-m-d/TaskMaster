@@ -1,0 +1,22 @@
+.icon {
+  height: 32px;
+}
+.error-window {
+  width: 400px;
+  min-height: 128px;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  padding: 32px;
+  gap: 16px;
+
+  background-color: var(--error-container);
+}
+.error-window__message {
+  text-align: center;
+}
+.error-window__close-button {
+  width: 90px;
+  height: 32px;
+}

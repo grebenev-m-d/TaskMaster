@@ -1,0 +1,53 @@
+<div
+  #cardContainer
+  class="card"
+  cdkDrag
+  cdkDragDisable
+  (click)="isEditing ? null : openModalPopUpEditCard()"
+  [cdkDragDisabled]="!(currentAccessLevel >= 1)"
+  (contextmenu)="enableCardEditor($event)"
+  (cdkDragStarted)="dragStart($event)"
+  (cdkDragEnded)="dragEnd($event)"
+>
+  <div *ngIf="isEditing" class="card__delete-button" (click)="deleteCard()">
+    <img class="icon" src="../../../assets/icons/cross.svg" />
+  </div>
+  <div *ngIf="card.imageUrl" class="card__cover-image-wrapper">
+    <div
+      class="card__cover-image-outer"
+      [style.backgroundImage]="
+        card.hasCoverImage ? 'url(' + card.imageUrl + ')' : 'none'
+      "
+    >
+      <div
+        class="card__cover-image-inner"
+        [style.backgroundImage]="
+          card.hasCoverImage ? 'url(' + card.imageUrl + ')' : 'none'
+        "
+      ></div>
+    </div>
+  </div>
+  <div class="card-content">
+    <ng-container [ngSwitch]="currentAccessLevel >= 1 && isEditing">
+      <ng-container *ngSwitchCase="true">
+        <textarea
+          oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
+          [(ngModel)]="card.title"
+          class="edit-title-textarea title"
+          (change)="updateTitle()"
+          placeholder="Write a few words about yourself"
+          tuiTextfield
+        ></textarea>
+      </ng-container>
+      <ng-container *ngSwitchCase="false">
+        <p class="title">{{ card.title }}</p>
+      </ng-container>
+    </ng-container>
+  </div>
+
+  <div
+    class="card-placeholder"
+    *cdkDragPlaceholder
+    [style.height.px]="placeholderHeight"
+  ></div>
+</div>

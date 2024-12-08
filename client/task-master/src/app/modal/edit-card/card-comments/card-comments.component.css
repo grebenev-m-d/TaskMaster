@@ -1,0 +1,120 @@
+p {
+  margin: 0;
+}
+.comments-hide {
+  max-height: 400px;
+  overflow: hidden;
+}
+.comments__show-button {
+  width: 100%;
+  height: 32px;
+  border-radius: 8px;
+}
+
+.comments-containers {
+  min-height: 80px;
+}
+.comments-container-wrapper {
+  width: 100%;
+}
+.comments-container {
+  border-radius: 8px;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+    rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+  margin: 4px;
+  padding: 4px;
+  width: 90%;
+}
+.comments-container_left {
+  float: left;
+}
+
+.comments-container_right {
+  float: right;
+}
+
+.comment-information {
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
+.comment-information-user {
+  display: flex;
+  gap: 8px;
+  flex-direction: column-reverse;
+  height: 100%;
+}
+.comment-information__text {
+  font-size: 12px;
+  margin: 0;
+}
+
+.comment-information-card {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  padding: 8px;
+  height: 100%;
+}
+.comment-information-card__date-time {
+  margin: 0;
+  font-size: 12px;
+}
+
+.comment {
+  border-radius: 8px;
+
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+
+  min-height: 64px;
+  padding: 8px;
+}
+
+.comment__control-panel {
+  display: flex;
+  justify-content: flex-start;
+  height: 100%;
+  height: 100%;
+}
+.control-panel__button {
+  width: 80px;
+  height: 32px;
+}
+.control-panel__button-change {
+  width: 80px;
+  height: 32px;
+  margin-left: auto;
+}
+.comment__text {
+  font-size: 14px;
+  align-self: flex-start;
+  word-break: break-all;
+}
+.add-comment {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.add-comment__textarea {
+  font-size: 16px;
+  border-radius: 8px;
+  min-height: 32px;
+  width: 70%;
+  resize: none; /* Запрещаем изменять размер */
+}
+
+.add-comment {
+  display: flex;
+  justify-content: space-around;
+  padding: 8px;
+}
+
+.add-comment__button {
+  float: left;
+  width: 20%;
+
+  height: 40px;
+}

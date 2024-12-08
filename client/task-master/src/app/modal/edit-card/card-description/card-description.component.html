@@ -1,0 +1,13 @@
+<div>
+  <div
+    (click)="startEdit()"
+    [ngClass]="{ 'card-description__editor-hide': !isEditing }"
+  >
+    <app-editor #editorComponent [html]="middleDescription"></app-editor>
+  </div>
+
+  <div *ngIf="isEditing">
+    <button (click)="updateDescription()">сохранить</button>
+    <button (click)="cancelChanges()">отмена</button>
+  </div>
+</div>
