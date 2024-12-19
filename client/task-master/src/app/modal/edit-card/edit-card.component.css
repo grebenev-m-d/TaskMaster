@@ -1,0 +1,60 @@
+.edit-card {
+  width: 700px;
+
+  overflow-y: initial !important;
+}
+
+.edit-card-content {
+  height: 60vh;
+  overflow-y: auto;
+  float: left;
+  padding: 32px;
+  width: 100%;
+}
+.edit-card-content__item {
+  float: left;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  border-radius: 8px;
+  padding: 4px;
+  margin-bottom: 16px;
+}
+.edit-card-header__cover-image-wrapper {
+  height: 256px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.edit-card-header__cover-image-outer {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: 50%;
+}
+
+.edit-card-header__cover-image-inner {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  backdrop-filter: blur(20px);
+  background-position-x: center;
+  background-position-y: 50%;
+}
+.custom-file-upload-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  gap: 16px;
+  padding: 32px 0px 0px 32px;
+}
+.edit-card__title {
+  float: left;
+  width: 100%;
+  height: 32px;
+  font-size: 16px;
+  padding: 22px;
+}
+.cover-image__delete-button {
+  font-size: 16px;
+}

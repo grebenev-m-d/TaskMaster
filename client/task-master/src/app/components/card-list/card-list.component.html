@@ -1,0 +1,71 @@
+<div
+  class="card-list"
+  #cardListContainer
+  cdkDrag
+  (cdkDragStarted)="handleDragStarted($event)"
+  [cdkDragDisabled]="!(currentAccessLevel >= 1) || !dragAndDropList"
+>
+  <div class="card-list-editor-panel">
+    <input
+      type="text"
+      [(ngModel)]="cardList.title"
+      class="card-list-editor-panel__title-input"
+      (change)="updateTitle()"
+      (focus)="dragAndDropList = false"
+      (blur)="dragAndDropList = true"
+    />
+    <div
+      class="card-list-editor-panel__delete-block"
+      *ngIf="currentAccessLevel >= 1"
+      (click)="deleteCardList()"
+    >
+      <img class="icon" src="../../../assets/icons/cross.svg" />
+    </div>
+  </div>
+  <div
+    cdkDropList
+    [cdkDropListData]="cardList.cards"
+    class="card-list__items"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <app-card
+      *ngFor="let card of cardList.cards; let i = index"
+      [card]="card"
+      [index]="i"
+      [currentAccessLevel]="currentAccessLevel"
+      [cardHubService]="cardHubService"
+      [dragAndDropList]="dragAndDropList"
+      class="card-list__item"
+      (dragAndDropListChange)="onDragAndDropListChange($event)"
+    >
+    </app-card>
+  </div>
+
+  <div class="board__add-card-block">
+    <div *ngIf="currentAccessLevel >= 1" #addListBlock class="add-card">
+      <div *ngIf="formVisibility">
+        <div class="board__add-card-form">
+          <input
+            class="add-card-form__card-title-input"
+            type="text"
+            [(ngModel)]="text"
+            placeholder="Введите текст..."
+          />
+          <button class="add-card-form__add-card-button" (click)="addCard()">
+            Создать
+          </button>
+        </div>
+      </div>
+      <div class="add-card-block__open-form" *ngIf="!formVisibility">
+        <button class="add-card-block__add-card-button" (click)="showForm()">
+          Добавить
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    class="card-list-placeholder"
+    *cdkDragPlaceholder
+    [(style.height.px)]="placeholderHeight"
+  ></div>
+</div>

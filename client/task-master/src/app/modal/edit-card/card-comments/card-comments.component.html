@@ -1,0 +1,98 @@
+<div [ngClass]="{ 'comments-hide': !hasShownFull }">
+  <button class="comments__show-button" (click)="hasShownFull = !hasShownFull">
+    <p *ngIf="hasShownFull">Скрыть все</p>
+    <p *ngIf="!hasShownFull">Показать все</p>
+  </button>
+  <div class="comments-containers">
+    @for(cardCommentState of cardCommentStates; track cardCommentState){
+    <div
+      class="comments-container comments-container_right"
+      [ngClass]="{
+        'comments-container_right': userId === cardCommentState.entity.user.id,
+        'comments-container_left': userId !== cardCommentState.entity.user.id
+      }"
+    >
+      <div class="comment-information">
+        <div class="comment-information-user">
+          <p class="comment-information__text">
+            От кого: {{ cardCommentState.entity.user.name }}
+          </p>
+          <p class="comment-information__text">
+            {{ cardCommentState.entity.user.email }}
+          </p>
+        </div>
+      </div>
+
+      <div *ngIf="cardCommentState.isEditing === true" class="comment">
+        <textarea
+          oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
+          type="text"
+          [(ngModel)]="cardCommentState.entity.text"
+          class="comment__text-input"
+        ></textarea>
+
+        <div class="comment__control-panel">
+          <button
+            class="control-panel__button"
+            (click)="changeText(cardCommentState)"
+          >
+            Сохранить
+          </button>
+
+          <button
+            class="control-panel__button control-panel__button-delete"
+            (click)="deleteComment(cardCommentState)"
+          >
+            Удалить
+          </button>
+        </div>
+      </div>
+
+      <div *ngIf="cardCommentState.isEditing === false" class="comment">
+        <p class="comment__text">{{ cardCommentState.entity.text }}</p>
+      </div>
+      <div class="comment__control-panel">
+        <div class="comment-information-card">
+          <p class="comment-information-card__date-time">
+            Создано: {{ formatDate(cardCommentState.entity.createdAt) }}
+          </p>
+          <p class="comment-information-card__date-time">
+            Изменено: {{ formatDate(cardCommentState.entity.updatedAt) }}
+          </p>
+        </div>
+        <button
+          *ngIf="
+            userId === cardCommentState.entity.user.id &&
+            cardCommentState.isEditing !== true
+          "
+          class="control-panel__button-change"
+          (click)="cardCommentState.isEditing = true"
+        >
+          Изменить
+        </button>
+        <button
+          *ngIf="cardCommentState.isEditing === true"
+          class="control-panel__button-change"
+          (click)="cardCommentState.isEditing = false"
+        >
+          Отмена
+        </button>
+      </div>
+    </div>
+    }
+  </div>
+  <div class="comments-container-wrapper">
+    <div class="add-comment">
+      <textarea
+        oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
+        type="text"
+        [(ngModel)]="commentText"
+        class="add-comment__textarea"
+      ></textarea>
+
+      <button class="add-comment__button" (click)="createComment()">
+        Добавить
+      </button>
+    </div>
+  </div>
+</div>

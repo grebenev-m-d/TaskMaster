@@ -1,0 +1,4 @@
+.card-description__editor-hide {
+  max-height: 150px;
+  overflow: hidden;
+}

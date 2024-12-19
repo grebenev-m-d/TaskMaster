@@ -1,0 +1,62 @@
+<div class="edit-card">
+  <div *ngIf="card.imageUrl" class="edit-card-header__cover-image-wrapper">
+    <div
+      class="edit-card-header__cover-image-outer"
+      [style.backgroundImage]="
+        card.imageUrl ? 'url(' + card.imageUrl + ')' : 'none'
+      "
+    >
+      <div
+        class="edit-card-header__cover-image-inner"
+        [style.backgroundImage]="
+          card.imageUrl ? 'url(' + card.imageUrl + ')' : 'none'
+        "
+      ></div>
+    </div>
+  </div>
+  <div class="custom-file-upload-wrapper">
+    <label for="image-upload" class="custom-file-upload">
+      Загрузить обложку
+      <input
+        class="cover-image__input-file"
+        id="image-upload"
+        type="file"
+        multiple="false"
+        (change)="addCoverImage($event)"
+    /></label>
+
+    <button
+      *ngIf="card.hasCoverImage"
+      class="cover-image__delete-button"
+      (click)="deleteCoverImage()"
+    >
+      Удалить обложку
+    </button>
+  </div>
+  <div class="edit-card-content">
+    <input
+      class="edit-card__title edit-card-content__item"
+      [(ngModel)]="card.title"
+      (blur)="updateTitle()"
+      placeholder="Введите текст"
+    />
+
+    <app-card-description
+      class="edit-card-content__item"
+      [card]="card"
+      [middleDescription]="card.description"
+      [cardHubService]="cardHubService"
+    ></app-card-description>
+
+    <app-card-attachment
+      class="edit-card-content__item"
+      [card]="card"
+      [cardHubService]="cardHubService"
+    ></app-card-attachment>
+
+    <app-card-comments
+      class="edit-card-content__item"
+      [cardId]="cardId"
+    ></app-card-comments>
+  </div>
+</div>

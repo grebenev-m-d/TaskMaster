@@ -1,0 +1,97 @@
+<div>
+  <div
+    *ngIf="
+      historyLastViewedBoards != null && historyLastViewedBoards.length != 0
+    "
+    class="final-open-boards"
+  >
+    <div class="boards-header">
+      <img class="icon" src="../../../../assets/icons/time-fast.svg" />
+      <h2 class="boards-header__title">Последние открытые доски</h2>
+    </div>
+    <div class="boards-content">
+      <div class="history-last-viewed-board">
+        @for (historyLastViewedBoard of historyLastViewedBoards;track
+        historyLastViewedBoard){
+        <app-board
+          class="board"
+          [board]="historyLastViewedBoard"
+          [boardHubService]="boardHubService"
+          [boardAccessLevelHubService]="boardAccessLevelHubService"
+        ></app-board>
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="own-boards">
+    <div class="boards-header">
+      <img class="icon" src="../../../../assets/icons/time-fast.svg" />
+      <h2 class="boards-header__title">Мои доски</h2>
+    </div>
+    <div class="own-boards__control-panel">
+      <button
+        [ngClass]="{ 'control-panel__button-selected': allowSelection }"
+        class="control-panel__button"
+        (click)="allowSelection = !allowSelection"
+      >
+        Выбрать
+      </button>
+      <button class="control-panel__button" (click)="deleteSelectedBoards()">
+        Удалить выбранное
+      </button>
+    </div>
+    <div class="boards-content">
+      <div class="boards">
+        <div
+          class="board-creation"
+          #openButtonBoardCreation
+          *ngIf="!isCreatedBoard"
+          (click)="showFormCreatedBoard()"
+        >
+          <div class="board-creation-inner">
+            <img class="icon" src="../../../../assets/icons/plus.svg" />
+            <p class="board-creation__text">Создать доску</p>
+          </div>
+        </div>
+        <div #boardCreation *ngIf="isCreatedBoard" class="board-creation">
+          <div class="board-creation-inner">
+            <input
+              autofocus
+              [(ngModel)]="boardCreationTitle"
+              class="board-creation__title-input"
+              placeholder="Название доски"
+            />
+            <button
+              class="board-creation__create-button"
+              (click)="createBoard()"
+            >
+              Создать
+            </button>
+          </div>
+        </div>
+        @for (ownedBoardState of ownedBoardStates;track ownedBoardState){
+        <div (click)="selectBoard(ownedBoardState)">
+          <app-board
+            class="board"
+            [allowSelection]="allowSelection"
+            [board]="ownedBoardState.entity"
+            [hasBoardSelected]="ownedBoardState.selected"
+            [boardHubService]="boardHubService"
+            [boardAccessLevelHubService]="boardAccessLevelHubService"
+          ></app-board>
+        </div>
+        }
+        <div class="show-more-boards-button-wrapper">
+          <button
+            class="show-more-boards-button"
+            *ngIf="totalNumberOwnedBoards > ownedBoardStates.length"
+            (click)="showMoreOwnedBoards()"
+          >
+            Еще
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

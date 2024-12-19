@@ -1,0 +1,146 @@
+<div class="board-accessLevels-modal">
+  <div class="board-accessLevels-modal__owner-setting">
+    <h3>Владелец доски</h3>
+    <div class="owner-setting__block">
+      <input
+        class="owner-setting__email-input"
+        type="email"
+        [(ngModel)]="ownerEmail"
+      />
+      <button
+        class="owner-setting__change-owner-button"
+        (click)="changeOwner()"
+      >
+        Передать
+      </button>
+    </div>
+  </div>
+
+  <div class="public-setting-wrapper">
+    <h3>Глобальный уровень доступа (для всех)</h3>
+    <div class="public-setting-outer">
+      <div class="board-accessLevels-modal__public-setting">
+        <div class="radio-inputs">
+          <label class="radio">
+            <input
+              type="radio"
+              (click)="changeGeneralAccessLevel(AccessLevelTypeEnum.reader)"
+              name="radio"
+              [checked]="
+                boardAccessLevel.defaultAccessLevelType ===
+                AccessLevelTypeEnum.reader
+              "
+            />
+            <span class="name">Чтение</span>
+          </label>
+          <label class="radio">
+            <input
+              type="radio"
+              (click)="changeGeneralAccessLevel(AccessLevelTypeEnum.editor)"
+              name="radio"
+              [checked]="
+                boardAccessLevel.defaultAccessLevelType ===
+                AccessLevelTypeEnum.editor
+              "
+            />
+            <span class="name">Запись</span>
+          </label>
+          <button
+            [ngClass]="{ 'button-selected': !boardAccessLevel.isPublic }"
+            class="public-setting__isPublic-button"
+            (click)="changeIsPublic()"
+          >
+            <p *ngIf="boardAccessLevel.isPublic">Публично</p>
+            <p *ngIf="!boardAccessLevel.isPublic">Приватно</p>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="board-accessLevels-modal__personal-setting">
+    <h3>Персональный уровень доступа</h3>
+    <div class="users-table">
+      <div
+        class="users-table__row"
+        *ngFor="
+          let accessLevel of boardAccessLevel.personalAccessLevels;
+          let i = index
+        "
+      >
+        <div class="users-table__item">{{ accessLevel.user.email }}</div>
+        <div class="users-table__item">
+          <div class="radio-inputs">
+            <label class="radio">
+              <input
+                type="radio"
+                name="personal-accessLevel"
+                (click)="
+                  accessLevel.accessLevel = AccessLevelTypeEnum.reader;
+                  changeAccessLevel(accessLevel)
+                "
+                [checked]="
+                  accessLevel.accessLevel === AccessLevelTypeEnum.reader
+                "
+              />
+              <span class="name">Чтение</span>
+            </label>
+            <label class="radio">
+              <input
+                type="radio"
+                name="personal-accessLevel"
+                (click)="
+                  accessLevel.accessLevel = AccessLevelTypeEnum.editor;
+                  changeAccessLevel(accessLevel)
+                "
+                [checked]="
+                  accessLevel.accessLevel === AccessLevelTypeEnum.editor
+                "
+              />
+              <span class="name">Запись</span>
+            </label>
+            <button (click)="deleteAccessLevel(accessLevel)">Удалить</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="personal-setting__add-accessLevel-panel">
+      <input
+        class="add-accessLevel-panel__email-input"
+        type="email"
+        [(ngModel)]="userEmail"
+      />
+
+      <div class="accessLevel-selection-wrapper">
+        <div class="radio-inputs">
+          <label class="radio">
+            <input
+              type="radio"
+              name="personal-accessLevel"
+              (click)="accessLevel = AccessLevelTypeEnum.reader"
+              [checked]="accessLevel === AccessLevelTypeEnum.reader"
+            />
+            <span class="name">Чтение</span>
+          </label>
+          <label class="radio">
+            <input
+              type="radio"
+              name="personal-accessLevel"
+              (click)="accessLevel = AccessLevelTypeEnum.editor"
+              [checked]="accessLevel === AccessLevelTypeEnum.editor"
+            />
+            <span class="name">Запись</span>
+          </label>
+
+          <button
+            class="add-accessLevel-panel__add-accessLevel-button"
+            (click)="addAccessLevel()"
+          >
+            Добавить
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,131 @@
+p {
+  margin: 0;
+}
+.board-accessLevels-modal {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 25px;
+}
+
+.board-accessLevels-modal__owner-setting {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.owner-setting__block {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.owner-setting__email-input {
+  width: 250px;
+  height: 32px;
+}
+.owner-setting__change-owner-button {
+  width: 80px;
+  height: 32px;
+}
+
+.public-setting-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.public-setting-outer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.board-accessLevels-modal__public-setting {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.board-accessLevels-modal__personal-setting {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.users-table {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.users-table__row {
+  width: 100%;
+  display: flex;
+  gap: 32px;
+  justify-content: space-between;
+}
+.users-table__item {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.personal-setting__add-accessLevel-panel {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 8px;
+}
+.add-accessLevel-panel__email-input {
+  height: 32px;
+  width: 256px;
+}
+.accessLevel-selection-wrapper {
+  display: flex;
+  justify-content: center;
+}
+button {
+  height: 32px;
+  width: 128px;
+}
+.button-selected {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+.radio-inputs {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 0.5rem;
+  background-color: #eee;
+  box-sizing: border-box;
+  box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
+  padding: 0.25rem;
+  width: 300px;
+  font-size: 14px;
+}
+
+.radio-inputs .radio {
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.radio-inputs .radio input {
+  display: none;
+}
+
+.radio-inputs .radio .name {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  border: none;
+  padding: 0.5rem 0;
+  color: rgba(51, 65, 85, 1);
+  transition: all 0.15s ease-in-out;
+}
+
+.radio-inputs .radio input:checked + .name {
+  background-color: #fff;
+  font-weight: 600;
+}

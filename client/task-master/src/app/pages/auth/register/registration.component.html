@@ -1,0 +1,63 @@
+<app-loader *ngIf="hasShowLoader"></app-loader>
+<div class="message-block" *ngIf="registrationMessageShow">
+  {{ registrationMessage }}
+</div>
+<div class="registration-wrapper">
+  <img width="500px" src="../../../../assets/images/Task-bro.svg" />
+  <div class="form">
+    <p id="heading">Регистрация</p>
+
+    <div class="field">
+      <input
+        [(ngModel)]="form.name"
+        required
+        autocomplete="off"
+        placeholder="Имя"
+        class="input-field"
+        type="text"
+      />
+      <span class="hint-message" *ngIf="form.name.length === 0">{{
+        errorMessageName
+      }}</span>
+      <input
+        [(ngModel)]="form.email"
+        required
+        autocomplete="off"
+        placeholder="Email"
+        class="input-field"
+        type="text"
+      />
+      <span class="hint-message" *ngIf="!emailRegex.test(form.email)">
+        {{ errorMessageEmail }}
+      </span>
+      <input
+        [(ngModel)]="form.password"
+        required
+        autocomplete="off"
+        placeholder="Придумайте пароль"
+        class="input-field"
+        type="text"
+      />
+      <span
+        class="hint-message"
+        *ngIf="form.password.length < minPasswordLength"
+        >{{ errorMessagePasswordLength }}</span
+      >
+      <input
+        [(ngModel)]="form.confirmPassword"
+        required
+        autocomplete="off"
+        placeholder="Повторите пароль"
+        class="input-field"
+        type="text"
+      />
+      <span
+        class="hint-message"
+        *ngIf="form.confirmPassword !== form.password"
+        >{{ errorMessagePasswordMatch }}</span
+      >
+      <button class="create-button" (click)="registration()">Создать</button>
+      <button class="login-button" [routerLink]="'/login/'">Войти</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,87 @@
+.header {
+  height: 80px;
+  background-color: var(--secondary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 16px 16px 32px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.header__title-block {
+  display: flex;
+  justify-content: space-around;
+  height: 100%;
+  gap: 16px;
+  align-items: center;
+}
+
+.header__title {
+  margin: 0;
+  font-size: 38px;
+}
+
+.profile-block {
+  position: relative;
+  display: block;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.profile-block-button {
+  border-radius: 44px;
+  background: #e0e0e0;
+  box-shadow: 35px 35px 70px #bababa, -35px -35px 70px #ffffff;
+  position: relative;
+  padding: 12px 32px 12px 32px;
+  background-color: var(--secondary);
+  border-radius: 35px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
+  font-size: 15px;
+  font-weight: bold;
+  border: 2px solid transparent;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  font-size: 13px;
+  position: absolute;
+  z-index: 3;
+  right: 0px;
+  min-width: 200px;
+  border: 2px solid #bababa;
+  border-radius: 15px 0px 15px 15px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  background-color: white;
+}
+.dropdown-content-item {
+  margin-top: 16px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.dropdown-content-item button {
+  height: 32px;
+  width: 128px;
+}
+
+.dropdown-content-item p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.profile-block:hover button {
+  border-radius: 15px 15px 0px 0px;
+}
+
+.profile-block:hover .dropdown-content {
+  display: block;
+}

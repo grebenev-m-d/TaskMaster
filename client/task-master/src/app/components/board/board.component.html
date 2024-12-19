@@ -1,0 +1,22 @@
+<div
+  [routerLink]="!allowSelection ? '/edit-board/' + board.id : null"
+  class="board"
+  (click)="hasBoardSelected = !hasBoardSelected"
+  (contextmenu)="openModalEditBoard($event)"
+  [style.backgroundColor]="
+    board.designType === DesignTypeEnum.color ? board.colorCode : 'transparent'
+  "
+  [style.backgroundImage]="
+    board.designType === DesignTypeEnum.image
+      ? 'url(' + board.imageUrl + ')'
+      : 'none'
+  "
+>
+  <div class="board-inner">
+    <div [ngClass]="{ 'board-selected': allowSelection && hasBoardSelected }">
+      <div class="board-title">
+        <p>{{ board.title }}</p>
+      </div>
+    </div>
+  </div>
+</div>

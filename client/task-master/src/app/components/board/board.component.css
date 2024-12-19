@@ -1,0 +1,62 @@
+.board-inner {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0)
+  );
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  padding: 16px;
+}
+
+.board {
+  border-radius: 44px;
+
+  border-radius: 35px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(52, 41, 41, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 150px;
+  width: 260px;
+
+  border-radius: 30px;
+  /* Content style */
+  font-size: 20px;
+  font-weight: 900;
+  color: #000000;
+  text-align: center;
+  background-position-x: center;
+  background-size: contain; /* Изображение масштабируется, чтобы полностью поместиться в блок */
+  background-repeat: no-repeat; /* Изображение не повторяется */
+  background-position: center; /* Изображение центрируется в блоке */
+}
+.board:hover {
+  height: 155px;
+  width: 265px;
+  transform: scale(1.05);
+}
+.board-selected {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 186px -28px inset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.board-selected .board-title {
+  color: #ffffff;
+}

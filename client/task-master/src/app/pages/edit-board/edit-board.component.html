@@ -1,0 +1,83 @@
+<app-header></app-header>
+<div
+  class="board"
+  [style.background-color]="
+    board.designType === DesignTypeEnum.color ? board.colorCode : 'transparent'
+  "
+  [style.background-image]="
+    board.designType === DesignTypeEnum.image
+      ? 'url(' + board.imageUrl + ')'
+      : 'none'
+  "
+>
+  <div class="board__control-panel">
+    <button
+      *ngIf="currentAccessLevel >= 1"
+      class="control-panel-button control-panelbutton_change-board"
+      (click)="openModalEditBoard($event)"
+    >
+      Редактировать доску
+    </button>
+    <button
+      class="control-panel-button control-panelbutton_change-permission"
+      *ngIf="currentAccessLevel === 2"
+      (click)="changeAccessLevel()"
+    >
+      Назначить уровень доступа
+    </button>
+    <div class="current-permission">
+      Ваш уровень доступа:&nbsp;&nbsp;
+      <span *ngIf="currentAccessLevel === 0">Читатель</span>
+      <span *ngIf="currentAccessLevel === 1">Редактор</span>
+      <span *ngIf="currentAccessLevel === 2">Владелец</span>
+    </div>
+  </div>
+
+  <div
+    class="board__content"
+    cdkDropList
+    cdkDropListOrientation="horizontal"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <div class="board__lists" cdkDropListGroup>
+      <app-card-list
+        *ngFor="let cardList of board.cardLists; let i = index"
+        [board]="board"
+        [cardList]="cardList"
+        [cardListHubService]="cardListHubService"
+        [cardHubService]="cardHubService"
+        [indexCardList]="i"
+        [currentAccessLevel]="currentAccessLevel"
+        class="example-box"
+      ></app-card-list>
+
+      <div
+        class="board__add-list-block"
+        *ngIf="currentAccessLevel > 0"
+        #addListBlock
+      >
+        <div *ngIf="formVisibility" class="board__add-list-form">
+          <input
+            class="add-list-form__list-title-input"
+            type="text"
+            [(ngModel)]="text"
+            placeholder="Введите текст..."
+          />
+          <button
+            class="add-list-form__add-list-button"
+            (click)="addCardList()"
+          >
+            Создать
+          </button>
+        </div>
+        <div class="add-list-block__open-form" *ngIf="!formVisibility">
+          <button class="add-list-block__add-list-button" (click)="showForm()">
+            Добавить список
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="board__footer"></div>
+</div>

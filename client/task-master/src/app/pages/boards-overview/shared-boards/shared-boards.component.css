@@ -1,0 +1,11 @@
+.shared-boards {
+  height: 100vh;
+}
+.user-blocks-img {
+  width: 600px;
+  margin: auto;
+}
+.user-blocks {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,18 @@
+<div class="shared-boards">
+  <div class="user-blocks">
+    <img
+      class="user-blocks-img"
+      *ngIf="usersWithSharedBoards.length == 0"
+      src="../../../../assets/images/Empty-bro.svg"
+    />
+    <div>
+      @for (user of usersWithSharedBoards;track user){
+      <app-user-shared-boards
+        [boardHubService]="boardHubService"
+        [boardAccessLevelHubService]="boardAccessLevelHubService"
+        [user]="user"
+      ></app-user-shared-boards>
+      }
+    </div>
+  </div>
+</div>

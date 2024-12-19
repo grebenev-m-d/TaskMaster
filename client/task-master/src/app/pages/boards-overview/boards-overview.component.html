@@ -1,0 +1,44 @@
+<app-header></app-header>
+<div class="boards-overview-wrapper">
+  <div class="boards-overview">
+    <div class="boards-overview__sidebar">
+      <div
+        class="sidebar__section"
+        (click)="currentBoardsType = BoardTypeEnum.ownedBoard"
+        [ngClass]="{
+          'sidebar__section-not-selected':
+            currentBoardsType !== BoardTypeEnum.ownedBoard,
+          'sidebar__section-selected':
+            currentBoardsType === BoardTypeEnum.ownedBoard
+        }"
+      >
+        <img class="sidebar__icon" src="../../../assets/icons/user.svg" />
+        <p class="sidebar__text">Доска</p>
+      </div>
+      <div
+        class="sidebar__section"
+        (click)="currentBoardsType = BoardTypeEnum.sharedBoard"
+        [ngClass]="{
+          'sidebar__section-not-selected':
+            currentBoardsType !== BoardTypeEnum.sharedBoard,
+          'sidebar__section-selected':
+            currentBoardsType === BoardTypeEnum.sharedBoard
+        }"
+      >
+        <img class="sidebar__icon" src="../../../assets/icons/refer.svg" />
+        <p class="sidebar__text">Общие доски</p>
+      </div>
+    </div>
+
+    <div class="content">
+      <ng-container [ngSwitch]="currentBoardsType">
+        <ng-container *ngSwitchCase="BoardTypeEnum.ownedBoard">
+          <app-own-boards></app-own-boards>
+        </ng-container>
+        <ng-container *ngSwitchCase="BoardTypeEnum.sharedBoard">
+          <app-shared-boards></app-shared-boards>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+</div>
